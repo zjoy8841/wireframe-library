@@ -15,8 +15,7 @@
     .file-item-icon,
     .dp-icon,
     .di-icon,
-    .toast-icon,
-    .alert-icon {
+    .toast-icon {
       filter: grayscale(100%);
       opacity: 0.55;
     }
@@ -563,101 +562,72 @@
 
 
     /* ========================================
-       10. 알림 / 상태 메시지 (Alert)
+       10. 알럿 (Alert) — 모달형 단일 형태
+       헤더 라벨 + 본문 메시지 + 1/2버튼 푸터.
+       그레이톤 단일 디자인. 색상 변형·아이콘 없음.
     ======================================== */
-    .alert { border-radius: var(--wf-radius); padding: 12px 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.55; }
-    .alert-icon {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--wf-text-secondary);
-      flex-shrink: 0;
-      margin-top: 1px;
-      white-space: nowrap;
-      letter-spacing: -0.2px;
-    }
-    .alert-body { flex: 1; min-width: 0; }
-    .alert-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--wf-text-primary); }
-    .alert-msg { font-size: 14px; color: var(--wf-text-secondary); line-height: 1.6; }
-    .alert-actions { display: flex; gap: 8px; margin-top: 10px; }
-    .alert-close { color: var(--wf-text-placeholder); cursor: pointer; font-size: 16px; line-height: 1; padding: 2px 4px; flex-shrink: 0; background: transparent; border: none; }
-    .alert-close:hover { color: var(--wf-text-primary); }
-
-    /* 톤별 (강조, 채움) */
-    .alert.info    { background: #EFEFEF; border-left: 4px solid #AAAAAA; color: #333333; }
-    .alert.success { background: #E8E8E8; border-left: 4px solid #888888; color: #222222; }
-    .alert.warning { background: #E4E4E4; border-left: 4px solid #777777; color: #333333; }
-    .alert.error   { background: #DCDCDC; border-left: 4px solid #555555; color: #222222; }
-
-    /* Light 변형 (배경 옅고 border만 강조) */
-    .alert.light { background: var(--wf-surface); border: 1px solid var(--wf-border); border-left-width: 4px; }
-    .alert.light.info    { border-left-color: #AAAAAA; }
-    .alert.light.success { border-left-color: #888888; }
-    .alert.light.warning { border-left-color: #777777; }
-    .alert.light.error   { border-left-color: #555555; }
-
-    /* Banner 변형 (페이지 상단 풀폭, 라운드 없음) */
-    .alert.banner { border-radius: 0; padding: 14px 24px; }
-
-    /* Inline (필드 옆 helper / error 텍스트형) */
-    .alert-inline { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; line-height: 1.4; }
-    .alert-inline .alert-inline-icon { font-size: 14px; font-weight: 700; flex-shrink: 0; }
-    .alert-inline.success { color: #444444; }
-    .alert-inline.error   { color: #555555; }
-    .alert-inline.warning { color: #666666; }
-    .alert-inline.info    { color: var(--wf-text-secondary); }
-
-    /* Confirm (다이얼로그형 alert — modal과 별개로 페이지 임베드 박스형) */
-    .alert.confirm {
-      background: var(--wf-surface);
-      border: 1px solid var(--wf-border);
-      border-left: 4px solid #555555;
-      flex-direction: column;
-      gap: 0;
-      padding: 16px 20px;
-    }
-    .alert.confirm .alert-row { display: flex; gap: 10px; align-items: flex-start; width: 100%; }
-
-    /* ----- Alert Dialog (모달형 알림 — 화면 dim + 가운데 박스) ----- */
     .alert-dialog-preview {
       border: 1px solid var(--wf-border);
       border-radius: var(--wf-radius);
       overflow: hidden;
-      background: #0000004D;
-      padding: 40px 20px;
+      background: rgba(60, 60, 60, 0.18);
+      padding: 32px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .alert-dialog {
       background: var(--wf-surface);
-      border-radius: 8px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      border: 1px solid var(--wf-border);
+      border-radius: 6px;
       width: 100%;
-      max-width: 380px;
-      padding: 28px 24px 20px;
-      text-align: center;
+      max-width: 320px;
+      overflow: hidden;
     }
-    .alert-dialog-icon {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 12px;
-      background: var(--wf-accent-light);
-      color: var(--wf-text-secondary);
+    .alert-dialog-header {
+      padding: 14px 20px;
+      text-align: center;
       font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.3px;
-      margin: 0 auto 14px;
+      color: var(--wf-text-primary);
+      border-bottom: 1px solid #EEEEEE;
+      background: var(--wf-surface);
     }
-    .alert-dialog-icon.info,
-    .alert-dialog-icon.success,
-    .alert-dialog-icon.warning,
-    .alert-dialog-icon.error { /* 와이어 단계: 톤 동일 회색 라벨 */ }
-    .alert-dialog-title { font-size: 16px; font-weight: 700; color: var(--wf-text-primary); margin-bottom: 8px; line-height: 1.4; }
-    .alert-dialog-msg { font-size: 14px; color: var(--wf-text-secondary); line-height: 1.6; margin-bottom: 22px; }
-    .alert-dialog-actions { display: flex; gap: 8px; justify-content: center; }
-    .alert-dialog-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; }
-    /* 1개 버튼일 때는 폭을 살짝 좁게 (full-equal로 가운데 정렬) */
-    .alert-dialog-actions.single .btn { flex: none; min-width: 120px; }
+    .alert-dialog-body {
+      padding: 28px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--wf-text-primary);
+      line-height: 1.7;
+    }
+    .alert-dialog-footer {
+      display: flex;
+      border-top: 1px solid #EEEEEE;
+    }
+    .alert-dialog-btn {
+      flex: 1;
+      padding: 13px 20px;
+      background: transparent;
+      border: none;
+      font-family: var(--wf-font);
+      font-size: 14px;
+      color: var(--wf-text-primary);
+      cursor: pointer;
+    }
+    .alert-dialog-btn:hover { background: #F5F5F5; }
+    .alert-dialog-btn + .alert-dialog-btn { border-left: 1px solid #EEEEEE; }
+
+    /* ========================================
+       11. 인라인 알림 (Inline Notice)
+       필드 옆 helper / 폼 검증 메시지.
+       알럿(모달)과는 별개의 컴포넌트.
+    ======================================== */
+    .inline-notice { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; line-height: 1.4; }
+    .inline-notice .inline-notice-icon { font-size: 14px; font-weight: 700; flex-shrink: 0; }
+    .inline-notice.success { color: #444444; }
+    .inline-notice.error   { color: #555555; }
+    .inline-notice.warning { color: #666666; }
+    .inline-notice.info    { color: var(--wf-text-secondary); }
 
 
     /* ========================================
@@ -1206,7 +1176,8 @@
   <a href="#tabs">탭</a>
   <a href="#modal">모달</a>
   <a href="#pagination">페이지네이션</a>
-  <a href="#alerts">알림</a>
+  <a href="#alerts">알럿</a>
+  <a href="#inline-notice">인라인 알림</a>
   <a href="#toast">토스트</a>
   <a href="#tags">뱃지 / 태그</a>
   <a href="#dropdown">드롭다운</a>
@@ -1676,97 +1647,40 @@
   </div>
 
 
-  <!-- ===== 10. 알림 ===== -->
+  <!-- ===== 10. 알럿 ===== -->
   <div class="section" id="alerts">
-    <div class="section-title">알림 / 상태 메시지 (Alert)</div>
+    <div class="section-title">알럿 (Alert)</div>
+    <p style="font-size:14px; color: var(--wf-text-secondary); margin-bottom: 14px; line-height: 1.6;">
+      모달형 단일 형태. 헤더 라벨 + 본문 메시지 + 1/2버튼 푸터로 구성. 사용자 동작을 차단하고 명시적 확인을 요구할 때 사용. 색상 변형·아이콘 없이 그레이톤 단일 디자인.
+    </p>
 
-    <!-- 기본 4종 (한 줄형) -->
+    <!-- 1버튼 알럿 -->
     <div class="subsection">
-      <div class="subsection-title">기본 (info / success / warning / error)</div>
-      <div class="showcase col">
-        <div class="alert info" data-component="Alert" data-type="Info">
-          <span class="alert-icon">[Alert]</span>
-          <span>데이터는 매일 오전 2시에 자동으로 업데이트됩니다.</span>
-        </div>
-        <div class="alert success" data-component="Alert" data-type="Success">
-          <span class="alert-icon">[Alert]</span>
-          <span>정합성 검증이 완료되었습니다. 총 3,241건 처리.</span>
-        </div>
-        <div class="alert warning" data-component="Alert" data-type="Warning">
-          <span class="alert-icon">[Alert]</span>
-          <span>신용정보원 데이터 수집이 4시간 지연되고 있습니다. 확인이 필요합니다.</span>
-        </div>
-        <div class="alert error" data-component="Alert" data-type="Error">
-          <span class="alert-icon">[Alert]</span>
-          <span>정합성 오류 17건이 감지되었습니다. 즉시 파이프라인 상태를 확인하세요.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 제목 + 본문 (2단형) -->
-    <div class="subsection">
-      <div class="subsection-title">제목 + 본문 (alert-title + alert-msg)</div>
-      <div class="showcase col">
-        <div class="alert info" data-component="Alert" data-type="WithTitle-Info">
-          <span class="alert-icon">[Alert]</span>
-          <div class="alert-body">
-            <div class="alert-title">시스템 점검 안내</div>
-            <div class="alert-msg">2026-04-30 02:00~04:00 정기 점검이 예정되어 있습니다. 점검 시간에는 서비스 이용이 제한됩니다.</div>
-          </div>
-        </div>
-        <div class="alert error" data-component="Alert" data-type="WithTitle-Error">
-          <span class="alert-icon">[Alert]</span>
-          <div class="alert-body">
-            <div class="alert-title">저장에 실패했습니다</div>
-            <div class="alert-msg">서버와의 연결이 일시적으로 끊겼습니다. 입력값은 그대로 유지되니 잠시 후 다시 시도해 주세요.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Dismissible (X 닫기) -->
-    <div class="subsection">
-      <div class="subsection-title">닫기 가능 (alert-close)</div>
-      <div class="showcase col">
-        <div class="alert success" data-component="Alert" data-type="Dismissible-Success">
-          <span class="alert-icon">[Alert]</span>
-          <div class="alert-body">
-            <div class="alert-title">등록되었습니다</div>
-            <div class="alert-msg">새로 추가된 항목은 목록 최상단에서 확인할 수 있습니다.</div>
-          </div>
-          <button class="alert-close" aria-label="닫기">✕</button>
-        </div>
-        <div class="alert warning" data-component="Alert" data-type="Dismissible-Warning">
-          <span class="alert-icon">[Alert]</span>
-          <span>저장되지 않은 변경 사항이 있습니다. 페이지를 떠나기 전 저장하세요.</span>
-          <button class="alert-close" aria-label="닫기">✕</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 모달형 alert — 1개 버튼 (확인 alert) -->
-    <div class="subsection">
-      <div class="subsection-title">확인 alert (모달형 · 버튼 1개)</div>
+      <div class="subsection-title">1버튼 알럿 (확인 후 닫기)</div>
       <div class="showcase col">
 
-        <div class="alert-dialog-preview" data-component="AlertDialog" data-type="OneButton-Success" data-name="확인 alert (성공)">
+        <div class="alert-dialog-preview" data-component="Alert" data-type="OneButton" data-name="1버튼 알럿 (확인)">
           <div class="alert-dialog">
-            <div class="alert-dialog-icon success">[Alert]</div>
-            <div class="alert-dialog-title">등록되었습니다</div>
-            <div class="alert-dialog-msg">새로 추가된 항목은 목록 최상단에서 확인할 수 있습니다.</div>
-            <div class="alert-dialog-actions single">
-              <button class="btn btn-cta">확인</button>
+            <div class="alert-dialog-header">안내</div>
+            <div class="alert-dialog-body">
+              인증코드를 발송했습니다.<br>
+              이메일을 확인 후 입력해주세요.
+            </div>
+            <div class="alert-dialog-footer">
+              <button class="alert-dialog-btn">확인</button>
             </div>
           </div>
         </div>
 
-        <div class="alert-dialog-preview" data-component="AlertDialog" data-type="OneButton-Error" data-name="확인 alert (오류)">
+        <div class="alert-dialog-preview" data-component="Alert" data-type="OneButton" data-name="1버튼 알럿 (커스텀 라벨)">
           <div class="alert-dialog">
-            <div class="alert-dialog-icon error">[Alert]</div>
-            <div class="alert-dialog-title">저장에 실패했습니다</div>
-            <div class="alert-dialog-msg">서버와의 연결이 일시적으로 끊겼습니다. 잠시 후 다시 시도해 주세요.</div>
-            <div class="alert-dialog-actions single">
-              <button class="btn btn-cta">확인</button>
+            <div class="alert-dialog-header">안내</div>
+            <div class="alert-dialog-body">
+              회원가입이 완료되었습니다.<br><br>
+              로그인 후 서비스를 이용해주세요.
+            </div>
+            <div class="alert-dialog-footer">
+              <button class="alert-dialog-btn">로그인하기</button>
             </div>
           </div>
         </div>
@@ -1774,118 +1688,63 @@
       </div>
     </div>
 
-    <!-- 모달형 alert — 2개 버튼 (컨펌 alert) -->
+    <!-- 2버튼 알럿 -->
     <div class="subsection">
-      <div class="subsection-title">컨펌 alert (모달형 · 버튼 2개)</div>
+      <div class="subsection-title">2버튼 알럿 (확인 / 취소 — 분기 동작)</div>
       <div class="showcase col">
 
-        <div class="alert-dialog-preview" data-component="AlertDialog" data-type="TwoButton-Confirm" data-name="컨펌 alert (이탈 확인)">
+        <div class="alert-dialog-preview" data-component="Alert" data-type="TwoButton" data-name="인증코드 유효시간 초과">
           <div class="alert-dialog">
-            <div class="alert-dialog-icon warning">[Alert]</div>
-            <div class="alert-dialog-title">변경 사항이 저장되지 않았습니다</div>
-            <div class="alert-dialog-msg">페이지를 나가시면 작성 중인 내용이 사라집니다. 계속하시겠습니까?</div>
-            <div class="alert-dialog-actions">
-              <button class="btn btn-ghost">취소</button>
-              <button class="btn btn-cta">나가기</button>
+            <div class="alert-dialog-header">안내</div>
+            <div class="alert-dialog-body">
+              인증 유효시간이 초과되었습니다.<br>
+              인증코드를 재발송하시겠습니까?
             </div>
-          </div>
-        </div>
-
-        <div class="alert-dialog-preview" data-component="AlertDialog" data-type="TwoButton-Danger" data-name="컨펌 alert (삭제)">
-          <div class="alert-dialog">
-            <div class="alert-dialog-icon error">[Alert]</div>
-            <div class="alert-dialog-title">선택한 3개 아이템을 삭제하시겠습니까?</div>
-            <div class="alert-dialog-msg">사용 중인 세트가 있는 경우 함께 영향을 받습니다. 이 작업은 되돌릴 수 없습니다.</div>
-            <div class="alert-dialog-actions">
-              <button class="btn btn-ghost">취소</button>
-              <button class="btn btn-danger">삭제</button>
+            <div class="alert-dialog-footer">
+              <button class="alert-dialog-btn">확인</button>
+              <button class="alert-dialog-btn">취소</button>
             </div>
           </div>
         </div>
 
       </div>
     </div>
+  </div>
 
-    <!-- Light 변형 -->
+
+  <!-- ===== 11. 인라인 알림 ===== -->
+  <div class="section" id="inline-notice">
+    <div class="section-title">인라인 알림 (Inline Notice)</div>
+    <p style="font-size:14px; color: var(--wf-text-secondary); margin-bottom: 14px; line-height: 1.6;">
+      필드 옆 helper / 폼 검증 메시지. 알럿(모달)과 달리 흐름을 차단하지 않고 입력값 옆에 즉시 노출되는 텍스트형 알림. 폼 검증·도움말 등 비차단 안내에 사용.
+    </p>
+
     <div class="subsection">
-      <div class="subsection-title">Light 변형 (옅은 배경, border 강조)</div>
+      <div class="subsection-title">필드 helper 변형 (success / error / warning)</div>
       <div class="showcase col">
-        <div class="alert light info" data-component="Alert" data-type="Light-Info">
-          <span class="alert-icon">[Alert]</span>
-          <div class="alert-body">
-            <div class="alert-title">팁</div>
-            <div class="alert-msg">아이템 이미지는 PNG 또는 SVG로 업로드하세요. SVG는 학생증 확대 시에도 선명하게 표시됩니다.</div>
-          </div>
-        </div>
-        <div class="alert light success" data-component="Alert" data-type="Light-Success">
-          <span class="alert-icon">[Alert]</span>
-          <span>모든 변경 사항이 자동 저장되었습니다.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Banner 변형 -->
-    <div class="subsection">
-      <div class="subsection-title">Banner (페이지 상단 풀폭)</div>
-      <div class="showcase col" style="padding: 0; border: 1px solid var(--wf-border); border-radius: var(--wf-radius); overflow: hidden;">
-        <div class="alert banner warning" data-component="Alert" data-type="Banner-Warning" style="margin: 0; width: 100%;">
-          <span class="alert-icon">[Alert]</span>
-          <div class="alert-body">
-            <div class="alert-title">읽기 전용 모드</div>
-            <div class="alert-msg">이 화면은 인수인계 동결 상태입니다. 수정이 필요한 경우 3차 프로젝트로 이관하세요.</div>
-          </div>
-          <button class="alert-close" aria-label="닫기">✕</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Inline (필드 옆 helper / error) -->
-    <div class="subsection">
-      <div class="subsection-title">Inline (필드 helper / 폼 검증)</div>
-      <div class="showcase col">
-        <div class="input-wrap" data-component="Alert" data-type="Inline-Error">
+        <div class="input-wrap" data-component="InlineNotice" data-type="Error">
           <label class="input-label">아이템 이름 <span class="input-required">*</span></label>
           <input class="input error" value="" placeholder="아이템 이름을 입력하세요">
-          <span class="alert-inline error">
-            <span class="alert-inline-icon">[Alert]</span>
+          <span class="inline-notice error">
+            <span class="inline-notice-icon">[Notice]</span>
             아이템 이름을 입력해 주세요
           </span>
         </div>
-        <div class="input-wrap" data-component="Alert" data-type="Inline-Success">
+        <div class="input-wrap" data-component="InlineNotice" data-type="Success">
           <label class="input-label">아이디</label>
           <input class="input" value="admin01">
-          <span class="alert-inline success">
-            <span class="alert-inline-icon">[Alert]</span>
+          <span class="inline-notice success">
+            <span class="inline-notice-icon">[Notice]</span>
             사용 가능한 아이디입니다
           </span>
         </div>
-        <div class="input-wrap" data-component="Alert" data-type="Inline-Warning">
+        <div class="input-wrap" data-component="InlineNotice" data-type="Warning">
           <label class="input-label">포인트</label>
           <input class="input" value="9999999">
-          <span class="alert-inline warning">
-            <span class="alert-inline-icon">[Alert]</span>
+          <span class="inline-notice warning">
+            <span class="inline-notice-icon">[Notice]</span>
             10,000,000P 이상은 본 사업 검토 대상입니다
           </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Confirm (페이지 임베드 박스형) -->
-    <div class="subsection">
-      <div class="subsection-title">Confirm 박스 (페이지 임베드 — modal 대안)</div>
-      <div class="showcase col">
-        <div class="alert confirm" data-component="Alert" data-type="Confirm">
-          <div class="alert-row">
-            <span class="alert-icon">[Alert]</span>
-            <div class="alert-body">
-              <div class="alert-title">선택한 3개 아이템을 삭제하시겠습니까?</div>
-              <div class="alert-msg">사용 중인 세트가 있는 경우 함께 영향을 받습니다. 이 작업은 되돌릴 수 없습니다.</div>
-            </div>
-          </div>
-          <div class="alert-actions" style="justify-content: flex-end; margin-top: 14px;">
-            <button class="btn btn-ghost btn-sm">취소</button>
-            <button class="btn btn-danger btn-sm">삭제</button>
-          </div>
         </div>
       </div>
     </div>
