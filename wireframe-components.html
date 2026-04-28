@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>와이어프레임 컴포넌트 라이브러리</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <style>
     /* ===== 기본 리셋 & 변수 ===== */
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,7 +34,7 @@
       --wf-warning: #888888;
       --wf-danger: #555555;
       --wf-radius: 4px;
-      --wf-font: 'Malgun Gothic', '맑은 고딕', sans-serif;
+      --wf-font: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
       --section-gap: 60px;
     }
 
@@ -41,8 +42,10 @@
       font-family: var(--wf-font);
       background: var(--wf-bg);
       color: var(--wf-text-primary);
-      font-size: 13px;
-      line-height: 1.5;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ===== 라이브러리 페이지 레이아웃 ===== */
@@ -57,34 +60,38 @@
       top: 0;
       z-index: 100;
     }
-    .lib-header h1 { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
-    .lib-header span { font-size: 11px; color: #999; margin-left: auto; }
+    .lib-header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+    .lib-header span { font-size: 14px; color: #999; margin-left: auto; }
 
     .lib-nav {
-      width: 200px;
+      width: 220px;
       background: #FFFFFF;
       border-right: 1px solid var(--wf-border);
       padding: 24px 0;
       position: fixed;
-      top: 57px;
+      top: 72px;
+      left: 0;
       bottom: 0;
       overflow-y: auto;
+      z-index: 90;
     }
     .lib-nav a {
       display: block;
       padding: 8px 20px;
       color: var(--wf-text-secondary);
       text-decoration: none;
-      font-size: 12px;
+      font-size: 14px;
       border-left: 3px solid transparent;
     }
     .lib-nav a:hover { background: var(--wf-accent-light); color: var(--wf-accent); border-left-color: var(--wf-accent); }
-    .lib-nav .nav-group { padding: 14px 20px 4px; font-size: 10px; font-weight: 700; color: #AAAAAA; letter-spacing: 0.5px; text-transform: uppercase; }
+    .lib-nav .nav-group { padding: 14px 20px 4px; font-size: 14px; font-weight: 700; color: #AAAAAA; letter-spacing: 0.5px; text-transform: uppercase; }
 
     .lib-content {
-      margin-left: 200px;
+      margin-left: 220px;
       padding: 40px 48px;
-      max-width: 1100px;
+      max-width: 1320px;
+      position: relative;
+      z-index: 1;
     }
 
     /* ===== 섹션 공통 ===== */
@@ -92,7 +99,7 @@
       margin-bottom: var(--section-gap);
     }
     .section-title {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--wf-text-primary);
       border-bottom: 2px solid var(--wf-border);
@@ -101,7 +108,7 @@
     }
     .subsection { margin-bottom: 32px; }
     .subsection-title {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--wf-text-secondary);
       text-transform: uppercase;
@@ -131,14 +138,14 @@
       gap: 6px;
     }
     .comp-name {
-      font-size: 10px;
+      font-size: 14px;
       color: var(--wf-text-placeholder);
       font-family: monospace;
     }
 
     /* 코드 힌트 */
     .code-hint {
-      font-size: 11px;
+      font-size: 14px;
       color: var(--wf-text-placeholder);
       font-family: monospace;
       background: #F0F0F0;
@@ -159,7 +166,7 @@
       border: none;
       border-radius: var(--wf-radius);
       font-family: var(--wf-font);
-      font-size: 13px;
+      font-size: 14px;
       cursor: pointer;
       white-space: nowrap;
       text-decoration: none;
@@ -206,7 +213,7 @@
       color: var(--wf-accent);
       border: 1px solid var(--wf-border);
       padding: 4px 10px;
-      font-size: 11px;
+      font-size: 14px;
       border-radius: 3px;
     }
     .btn-table:hover { background: var(--wf-accent-light); }
@@ -216,13 +223,13 @@
       color: var(--wf-text-secondary);
       border: 1px solid var(--wf-border);
       padding: 4px 10px;
-      font-size: 11px;
+      font-size: 14px;
       border-radius: 3px;
     }
 
     /* 크기 변형 */
-    .btn-lg { padding: 12px 28px; font-size: 15px; }
-    .btn-sm { padding: 6px 14px; font-size: 12px; }
+    .btn-lg { padding: 12px 28px; font-size: 16px; }
+    .btn-sm { padding: 6px 14px; font-size: 14px; }
 
     /* 비활성 */
     .btn[disabled], .btn.disabled {
@@ -255,7 +262,7 @@
        2. 인풋 컴포넌트
     ======================================== */
     .input-wrap { display: flex; flex-direction: column; gap: 5px; min-width: 220px; }
-    .input-label { font-size: 12px; font-weight: 600; color: var(--wf-text-secondary); }
+    .input-label { font-size: 14px; font-weight: 600; color: var(--wf-text-secondary); }
     .input-required { color: #555555; margin-left: 2px; }
 
     .input {
@@ -263,7 +270,7 @@
       border-radius: var(--wf-radius);
       padding: 8px 12px;
       font-family: var(--wf-font);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--wf-text-primary);
       background: var(--wf-surface);
       width: 100%;
@@ -273,8 +280,8 @@
     .input.error { border-color: #666666; }
     .input[disabled] { background: #F0F0F0; color: var(--wf-text-placeholder); }
 
-    .input-helper { font-size: 11px; color: var(--wf-text-placeholder); }
-    .input-error-msg { font-size: 11px; color: #555555; }
+    .input-helper { font-size: 14px; color: var(--wf-text-placeholder); }
+    .input-error-msg { font-size: 14px; color: #555555; }
 
     /* 검색 인풋 */
     .input-search-wrap {
@@ -296,7 +303,7 @@
       border-radius: var(--wf-radius);
       padding: 8px 32px 8px 12px;
       font-family: var(--wf-font);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--wf-text-primary);
       background: var(--wf-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
       appearance: none;
@@ -313,11 +320,11 @@
       gap: 8px;
     }
     .date-range .input { width: 140px; }
-    .date-range span { color: var(--wf-text-secondary); font-size: 12px; }
+    .date-range span { color: var(--wf-text-secondary); font-size: 14px; }
 
     /* 체크박스 / 라디오 */
     .check-group { display: flex; flex-direction: column; gap: 8px; }
-    .check-item { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; }
+    .check-item { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
     .check-item input[type="checkbox"],
     .check-item input[type="radio"] { width: 15px; height: 15px; accent-color: var(--wf-accent); cursor: pointer; }
 
@@ -334,12 +341,12 @@
       align-items: center;
       justify-content: center;
       color: var(--wf-text-placeholder);
-      font-size: 12px;
+      font-size: 14px;
       gap: 6px;
       text-align: center;
     }
     .placeholder-label {
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -398,10 +405,10 @@
       padding: 18px 20px;
       min-width: 180px;
     }
-    .kpi-label { font-size: 11px; color: var(--wf-text-secondary); margin-bottom: 6px; }
-    .kpi-value { font-size: 26px; font-weight: 700; color: var(--wf-text-primary); line-height: 1; margin-bottom: 6px; }
-    .kpi-sub { font-size: 11px; color: var(--wf-text-placeholder); }
-    .kpi-badge { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 10px; font-weight: 600; }
+    .kpi-label { font-size: 14px; color: var(--wf-text-secondary); margin-bottom: 6px; }
+    .kpi-value { font-size: 32px; font-weight: 700; color: var(--wf-text-primary); line-height: 1; margin-bottom: 6px; }
+    .kpi-sub { font-size: 14px; color: var(--wf-text-placeholder); }
+    .kpi-badge { display: inline-block; font-size: 14px; padding: 2px 6px; border-radius: 10px; font-weight: 600; }
     .kpi-badge.up { background: #E8E8E8; color: #333333; }
     .kpi-badge.down { background: #E0E0E0; color: #555555; }
     .kpi-badge.neutral { background: #F0F0F0; color: #666; }
@@ -415,7 +422,7 @@
        5. 테이블
     ======================================== */
     .table-wrap { border: 1px solid var(--wf-border); border-radius: var(--wf-radius); overflow: hidden; }
-    .wf-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .wf-table { width: 100%; border-collapse: collapse; font-size: 14px; }
     .wf-table th {
       background: #F5F5F5;
       border-bottom: 1.5px solid var(--wf-border);
@@ -438,7 +445,7 @@
     .wf-table .td-right { text-align: right; }
 
     /* 상태 뱃지 */
-    .status-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+    .status-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 14px; font-weight: 600; white-space: nowrap; }
     .status-badge.active   { background: #E8E8E8; color: #333; }
     .status-badge.inactive { background: #F0F0F0; color: #888; }
     .status-badge.pending  { background: #E0E0E0; color: #555; }
@@ -459,7 +466,7 @@
       align-items: flex-end;
     }
     .filter-item { display: flex; flex-direction: column; gap: 4px; }
-    .filter-label { font-size: 11px; font-weight: 600; color: var(--wf-text-secondary); }
+    .filter-label { font-size: 14px; font-weight: 600; color: var(--wf-text-secondary); }
     .filter-actions { margin-left: auto; display: flex; gap: 8px; align-items: flex-end; }
 
 
@@ -473,7 +480,7 @@
     }
     .tab-item {
       padding: 10px 20px;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--wf-text-secondary);
       cursor: pointer;
       border-bottom: 2px solid transparent;
@@ -516,7 +523,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .modal-title { font-size: 15px; font-weight: 700; }
+    .modal-title { font-size: 18px; font-weight: 700; }
     .modal-close { color: var(--wf-text-placeholder); cursor: pointer; font-size: 18px; }
     .modal-body { padding: 20px; }
     .modal-footer {
@@ -544,7 +551,7 @@
       justify-content: center;
       border: 1px solid var(--wf-border);
       border-radius: 3px;
-      font-size: 12px;
+      font-size: 14px;
       color: var(--wf-text-secondary);
       cursor: pointer;
       background: var(--wf-surface);
@@ -552,18 +559,105 @@
     }
     .page-btn.active { background: var(--wf-accent); color: #FFF; border-color: var(--wf-accent); font-weight: 700; }
     .page-btn:hover:not(.active) { background: var(--wf-accent-light); }
-    .page-info { font-size: 12px; color: var(--wf-text-secondary); margin-left: 8px; }
+    .page-info { font-size: 14px; color: var(--wf-text-secondary); margin-left: 8px; }
 
 
     /* ========================================
-       10. 알림 / 토스트
+       10. 알림 / 상태 메시지 (Alert)
     ======================================== */
-    .alert { border-radius: var(--wf-radius); padding: 12px 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 13px; }
-    .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .alert { border-radius: var(--wf-radius); padding: 12px 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.55; }
+    .alert-icon {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--wf-text-secondary);
+      flex-shrink: 0;
+      margin-top: 1px;
+      white-space: nowrap;
+      letter-spacing: -0.2px;
+    }
+    .alert-body { flex: 1; min-width: 0; }
+    .alert-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--wf-text-primary); }
+    .alert-msg { font-size: 14px; color: var(--wf-text-secondary); line-height: 1.6; }
+    .alert-actions { display: flex; gap: 8px; margin-top: 10px; }
+    .alert-close { color: var(--wf-text-placeholder); cursor: pointer; font-size: 16px; line-height: 1; padding: 2px 4px; flex-shrink: 0; background: transparent; border: none; }
+    .alert-close:hover { color: var(--wf-text-primary); }
+
+    /* 톤별 (강조, 채움) */
     .alert.info    { background: #EFEFEF; border-left: 4px solid #AAAAAA; color: #333333; }
     .alert.success { background: #E8E8E8; border-left: 4px solid #888888; color: #222222; }
     .alert.warning { background: #E4E4E4; border-left: 4px solid #777777; color: #333333; }
     .alert.error   { background: #DCDCDC; border-left: 4px solid #555555; color: #222222; }
+
+    /* Light 변형 (배경 옅고 border만 강조) */
+    .alert.light { background: var(--wf-surface); border: 1px solid var(--wf-border); border-left-width: 4px; }
+    .alert.light.info    { border-left-color: #AAAAAA; }
+    .alert.light.success { border-left-color: #888888; }
+    .alert.light.warning { border-left-color: #777777; }
+    .alert.light.error   { border-left-color: #555555; }
+
+    /* Banner 변형 (페이지 상단 풀폭, 라운드 없음) */
+    .alert.banner { border-radius: 0; padding: 14px 24px; }
+
+    /* Inline (필드 옆 helper / error 텍스트형) */
+    .alert-inline { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; line-height: 1.4; }
+    .alert-inline .alert-inline-icon { font-size: 14px; font-weight: 700; flex-shrink: 0; }
+    .alert-inline.success { color: #444444; }
+    .alert-inline.error   { color: #555555; }
+    .alert-inline.warning { color: #666666; }
+    .alert-inline.info    { color: var(--wf-text-secondary); }
+
+    /* Confirm (다이얼로그형 alert — modal과 별개로 페이지 임베드 박스형) */
+    .alert.confirm {
+      background: var(--wf-surface);
+      border: 1px solid var(--wf-border);
+      border-left: 4px solid #555555;
+      flex-direction: column;
+      gap: 0;
+      padding: 16px 20px;
+    }
+    .alert.confirm .alert-row { display: flex; gap: 10px; align-items: flex-start; width: 100%; }
+
+    /* ----- Alert Dialog (모달형 알림 — 화면 dim + 가운데 박스) ----- */
+    .alert-dialog-preview {
+      border: 1px solid var(--wf-border);
+      border-radius: var(--wf-radius);
+      overflow: hidden;
+      background: #0000004D;
+      padding: 40px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .alert-dialog {
+      background: var(--wf-surface);
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      width: 100%;
+      max-width: 380px;
+      padding: 28px 24px 20px;
+      text-align: center;
+    }
+    .alert-dialog-icon {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      background: var(--wf-accent-light);
+      color: var(--wf-text-secondary);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin: 0 auto 14px;
+    }
+    .alert-dialog-icon.info,
+    .alert-dialog-icon.success,
+    .alert-dialog-icon.warning,
+    .alert-dialog-icon.error { /* 와이어 단계: 톤 동일 회색 라벨 */ }
+    .alert-dialog-title { font-size: 16px; font-weight: 700; color: var(--wf-text-primary); margin-bottom: 8px; line-height: 1.4; }
+    .alert-dialog-msg { font-size: 14px; color: var(--wf-text-secondary); line-height: 1.6; margin-bottom: 22px; }
+    .alert-dialog-actions { display: flex; gap: 8px; justify-content: center; }
+    .alert-dialog-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; }
+    /* 1개 버튼일 때는 폭을 살짝 좁게 (full-equal로 가운데 정렬) */
+    .alert-dialog-actions.single .btn { flex: none; min-width: 120px; }
 
 
     /* ========================================
@@ -580,7 +674,7 @@
       border-radius: var(--wf-radius);
       padding: 8px 12px;
       font-family: var(--wf-font);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--wf-text-primary);
       background: var(--wf-surface);
       cursor: pointer;
@@ -599,7 +693,7 @@
       border-radius: var(--wf-radius);
       padding: 8px 12px;
       font-family: var(--wf-font);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--wf-text-primary);
       background: var(--wf-surface);
       cursor: pointer;
@@ -620,7 +714,7 @@
       padding: 4px 10px;
       border: 1px solid var(--wf-border);
       border-radius: 3px;
-      font-size: 11px;
+      font-size: 14px;
       cursor: pointer;
       background: var(--wf-surface);
       color: var(--wf-text-secondary);
@@ -663,12 +757,12 @@
       border: 1px solid var(--wf-border);
       border-radius: 3px;
       cursor: pointer;
-      font-size: 12px;
+      font-size: 14px;
       color: var(--wf-text-secondary);
       background: var(--wf-surface);
     }
     .dp-nav-btn:hover { background: var(--wf-accent-light); }
-    .dp-cal-title { font-size: 13px; font-weight: 700; color: var(--wf-text-primary); }
+    .dp-cal-title { font-size: 14px; font-weight: 700; color: var(--wf-text-primary); }
 
     /* 요일 행 */
     .dp-weekdays {
@@ -678,7 +772,7 @@
     }
     .dp-wd {
       text-align: center;
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--wf-text-placeholder);
       padding: 4px 0;
@@ -693,7 +787,7 @@
     .dp-day {
       text-align: center;
       padding: 6px 2px;
-      font-size: 12px;
+      font-size: 14px;
       cursor: pointer;
       border-radius: 3px;
       color: var(--wf-text-primary);
@@ -757,13 +851,13 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.12);
       padding: 12px 14px;
       min-width: 280px; max-width: 360px;
-      font-size: 13px;
+      font-size: 14px;
       position: relative;
     }
     .toast-icon { font-size: 16px; flex-shrink: 0; }
     .toast-body { flex: 1; }
-    .toast-title { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
-    .toast-msg { font-size: 12px; color: var(--wf-text-secondary); }
+    .toast-title { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+    .toast-msg { font-size: 14px; color: var(--wf-text-secondary); }
     .toast-close { color: var(--wf-text-placeholder); cursor: pointer; font-size: 14px; flex-shrink: 0; }
     .toast.success { border-left: 4px solid #888; }
     .toast.error   { border-left: 4px solid #555; }
@@ -781,20 +875,20 @@
     .tag {
       display: inline-flex; align-items: center; gap: 4px;
       padding: 3px 10px; border-radius: 12px;
-      font-size: 11px; font-weight: 600;
+      font-size: 14px; font-weight: 600;
       background: #E8E8E8; color: #444444;
       border: 1px solid #CCCCCC;
     }
-    .tag .tag-x { cursor: pointer; color: #888; font-size: 12px; line-height: 1; }
+    .tag .tag-x { cursor: pointer; color: #888; font-size: 14px; line-height: 1; }
     .tag .tag-x:hover { color: #333; }
     .tag.tag-solid { background: #444444; color: #FFFFFF; border-color: #444444; }
     .tag.tag-outline { background: transparent; color: #555555; border-color: #888888; }
-    .tag.tag-sm { padding: 2px 8px; font-size: 10px; }
-    .tag.tag-lg { padding: 5px 14px; font-size: 13px; }
+    .tag.tag-sm { padding: 2px 8px; font-size: 14px; }
+    .tag.tag-lg { padding: 5px 14px; font-size: 14px; }
     .tag-add {
       display: inline-flex; align-items: center; gap: 4px;
       padding: 3px 10px; border-radius: 12px;
-      font-size: 11px; color: var(--wf-text-placeholder);
+      font-size: 14px; color: var(--wf-text-placeholder);
       border: 1px dashed var(--wf-border-dash);
       cursor: pointer; background: transparent;
     }
@@ -816,14 +910,14 @@
     .dropdown-menu.right { left: auto; right: 0; }
     .dropdown-item {
       display: flex; align-items: center; gap: 8px;
-      padding: 9px 14px; font-size: 13px;
+      padding: 9px 14px; font-size: 14px;
       color: var(--wf-text-primary); cursor: pointer;
     }
     .dropdown-item:hover { background: var(--wf-accent-light); }
     .dropdown-item.danger { color: var(--wf-danger); }
     .dropdown-item .di-icon { font-size: 14px; }
     .dropdown-divider { border: none; border-top: 1px solid #EEEEEE; margin: 4px 0; }
-    .dropdown-group-label { padding: 6px 14px 2px; font-size: 10px; font-weight: 700; color: #AAAAAA; letter-spacing: 0.5px; text-transform: uppercase; }
+    .dropdown-group-label { padding: 6px 14px 2px; font-size: 14px; font-weight: 700; color: #AAAAAA; letter-spacing: 0.5px; text-transform: uppercase; }
 
     /* ========================================
        16. 툴팁
@@ -834,13 +928,13 @@
       display: inline-flex; align-items: center; justify-content: center;
       width: 28px; height: 28px;
       border: 1px solid var(--wf-border); border-radius: 50%;
-      font-size: 13px; cursor: pointer; background: var(--wf-surface);
+      font-size: 14px; cursor: pointer; background: var(--wf-surface);
       color: var(--wf-text-secondary);
     }
     .tooltip-box {
       position: absolute; bottom: calc(100% + 8px);
       background: #333333; color: #FFFFFF;
-      font-size: 11px; padding: 5px 10px;
+      font-size: 14px; padding: 5px 10px;
       border-radius: 4px; white-space: nowrap;
       box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
@@ -858,7 +952,7 @@
        17. 토글 / 스위치
     ======================================== */
     .toggle-group { display: flex; flex-direction: column; gap: 12px; }
-    .toggle-item { display: flex; align-items: center; gap: 10px; font-size: 13px; cursor: pointer; }
+    .toggle-item { display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; }
     .toggle {
       position: relative; width: 40px; height: 22px;
       border-radius: 11px; background: #CCCCCC;
@@ -874,7 +968,7 @@
     }
     .toggle.on::after { left: 21px; }
     .toggle-label { color: var(--wf-text-primary); }
-    .toggle-label .tl-sub { font-size: 11px; color: var(--wf-text-placeholder); display: block; }
+    .toggle-label .tl-sub { font-size: 14px; color: var(--wf-text-placeholder); display: block; }
     .toggle.disabled { opacity: 0.4; cursor: not-allowed; }
 
     /* ========================================
@@ -887,8 +981,8 @@
       background: var(--wf-surface); gap: 12px;
     }
     .empty-icon { font-size: 40px; opacity: 0.35; }
-    .empty-title { font-size: 15px; font-weight: 700; color: var(--wf-text-secondary); }
-    .empty-desc { font-size: 12px; color: var(--wf-text-placeholder); max-width: 280px; line-height: 1.6; }
+    .empty-title { font-size: 18px; font-weight: 700; color: var(--wf-text-secondary); }
+    .empty-desc { font-size: 14px; color: var(--wf-text-placeholder); max-width: 280px; line-height: 1.6; }
 
     /* ========================================
        19. 스켈레톤 로딩
@@ -921,7 +1015,7 @@
     ======================================== */
     .progress-wrap { display: flex; flex-direction: column; gap: 14px; width: 100%; }
     .progress-item { display: flex; flex-direction: column; gap: 5px; }
-    .progress-header { display: flex; justify-content: space-between; font-size: 12px; }
+    .progress-header { display: flex; justify-content: space-between; font-size: 14px; }
     .progress-label { color: var(--wf-text-secondary); }
     .progress-val { color: var(--wf-text-primary); font-weight: 700; }
     .progress-bar-bg {
@@ -957,13 +1051,13 @@
     .step-circle {
       width: 28px; height: 28px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700;
+      font-size: 14px; font-weight: 700;
       border: 2px solid #CCCCCC; background: var(--wf-surface);
       color: var(--wf-text-placeholder); z-index: 1;
     }
     .step-item.done .step-circle { background: #888888; border-color: #888888; color: #FFFFFF; }
     .step-item.active .step-circle { background: var(--wf-accent); border-color: var(--wf-accent); color: #FFFFFF; }
-    .step-label { font-size: 11px; color: var(--wf-text-placeholder); text-align: center; }
+    .step-label { font-size: 14px; color: var(--wf-text-placeholder); text-align: center; }
     .step-item.active .step-label { color: var(--wf-text-primary); font-weight: 700; }
     .step-item.done .step-label { color: var(--wf-text-secondary); }
 
@@ -981,12 +1075,12 @@
     }
     .file-drop:hover { background: #F0F0F0; border-color: #888888; }
     .file-drop-icon { font-size: 28px; opacity: 0.5; }
-    .file-drop-text { font-size: 13px; color: var(--wf-text-secondary); }
-    .file-drop-sub { font-size: 11px; color: var(--wf-text-placeholder); }
+    .file-drop-text { font-size: 14px; color: var(--wf-text-secondary); }
+    .file-drop-sub { font-size: 14px; color: var(--wf-text-placeholder); }
     .file-drop-btn {
       display: inline-block; margin-top: 4px;
       padding: 6px 16px; border: 1px solid var(--wf-border);
-      border-radius: 3px; font-size: 12px;
+      border-radius: 3px; font-size: 14px;
       background: var(--wf-surface); color: var(--wf-text-secondary); cursor: pointer;
     }
     .file-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
@@ -994,24 +1088,24 @@
       display: flex; align-items: center; gap: 10px;
       padding: 8px 12px;
       border: 1px solid var(--wf-border); border-radius: var(--wf-radius);
-      background: var(--wf-surface); font-size: 12px;
+      background: var(--wf-surface); font-size: 14px;
     }
     .file-item-icon { font-size: 16px; }
     .file-item-name { flex: 1; color: var(--wf-text-primary); }
-    .file-item-size { color: var(--wf-text-placeholder); font-size: 11px; }
-    .file-item-status { font-size: 11px; color: var(--wf-text-secondary); }
+    .file-item-size { color: var(--wf-text-placeholder); font-size: 14px; }
+    .file-item-status { font-size: 14px; color: var(--wf-text-secondary); }
     .file-item-remove { color: var(--wf-text-placeholder); cursor: pointer; font-size: 14px; }
     .file-item-remove:hover { color: var(--wf-text-primary); }
 
     /* ========================================
        23. 브레드크럼
     ======================================== */
-    .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; flex-wrap: wrap; }
+    .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 14px; flex-wrap: wrap; }
     .bc-item { color: var(--wf-text-secondary); cursor: pointer; }
     .bc-item:hover { color: var(--wf-text-primary); text-decoration: underline; }
     .bc-item.active { color: var(--wf-text-primary); font-weight: 600; cursor: default; }
     .bc-item.active:hover { text-decoration: none; }
-    .bc-sep { color: var(--wf-text-placeholder); font-size: 11px; }
+    .bc-sep { color: var(--wf-text-placeholder); font-size: 14px; }
 
     /* ========================================
        24. 아코디언
@@ -1022,14 +1116,14 @@
     .accordion-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 13px 16px; cursor: pointer; background: var(--wf-surface);
-      font-size: 13px; font-weight: 600; color: var(--wf-text-primary);
+      font-size: 14px; font-weight: 600; color: var(--wf-text-primary);
     }
     .accordion-header:hover { background: #FAFAFA; }
     .accordion-header.open { background: #F5F5F5; }
-    .accordion-arrow { font-size: 11px; color: var(--wf-text-placeholder); transition: transform 0.2s; }
+    .accordion-arrow { font-size: 14px; color: var(--wf-text-placeholder); transition: transform 0.2s; }
     .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
     .accordion-body {
-      padding: 14px 16px; font-size: 13px;
+      padding: 14px 16px; font-size: 14px;
       color: var(--wf-text-secondary); line-height: 1.7;
       background: var(--wf-surface); border-top: 1px solid #EEEEEE;
     }
@@ -1131,8 +1225,8 @@
 
 <!-- 헤더 -->
 <header class="lib-header">
-  <h1>소진공 와이어프레임 컴포넌트 라이브러리</h1>
-  <span>v1.0 · 기획자 공용 · 2026.03.30</span>
+  <h1>와이어프레임 컴포넌트 라이브러리</h1>
+  <span>v1.1 · 기획자 공용 · 2026.04.28</span>
 </header>
 
 <div class="lib-content">
@@ -1585,22 +1679,214 @@
   <!-- ===== 10. 알림 ===== -->
   <div class="section" id="alerts">
     <div class="section-title">알림 / 상태 메시지 (Alert)</div>
-    <div class="showcase col">
-      <div class="alert info" data-component="Alert" data-type="Info">
-        <span class="alert-icon">ℹ</span>
-        <span>데이터는 매일 오전 2시에 자동으로 업데이트됩니다.</span>
+
+    <!-- 기본 4종 (한 줄형) -->
+    <div class="subsection">
+      <div class="subsection-title">기본 (info / success / warning / error)</div>
+      <div class="showcase col">
+        <div class="alert info" data-component="Alert" data-type="Info">
+          <span class="alert-icon">[Alert]</span>
+          <span>데이터는 매일 오전 2시에 자동으로 업데이트됩니다.</span>
+        </div>
+        <div class="alert success" data-component="Alert" data-type="Success">
+          <span class="alert-icon">[Alert]</span>
+          <span>정합성 검증이 완료되었습니다. 총 3,241건 처리.</span>
+        </div>
+        <div class="alert warning" data-component="Alert" data-type="Warning">
+          <span class="alert-icon">[Alert]</span>
+          <span>신용정보원 데이터 수집이 4시간 지연되고 있습니다. 확인이 필요합니다.</span>
+        </div>
+        <div class="alert error" data-component="Alert" data-type="Error">
+          <span class="alert-icon">[Alert]</span>
+          <span>정합성 오류 17건이 감지되었습니다. 즉시 파이프라인 상태를 확인하세요.</span>
+        </div>
       </div>
-      <div class="alert success" data-component="Alert" data-type="Success">
-        <span class="alert-icon">✔</span>
-        <span>정합성 검증이 완료되었습니다. 총 3,241건 처리.</span>
+    </div>
+
+    <!-- 제목 + 본문 (2단형) -->
+    <div class="subsection">
+      <div class="subsection-title">제목 + 본문 (alert-title + alert-msg)</div>
+      <div class="showcase col">
+        <div class="alert info" data-component="Alert" data-type="WithTitle-Info">
+          <span class="alert-icon">[Alert]</span>
+          <div class="alert-body">
+            <div class="alert-title">시스템 점검 안내</div>
+            <div class="alert-msg">2026-04-30 02:00~04:00 정기 점검이 예정되어 있습니다. 점검 시간에는 서비스 이용이 제한됩니다.</div>
+          </div>
+        </div>
+        <div class="alert error" data-component="Alert" data-type="WithTitle-Error">
+          <span class="alert-icon">[Alert]</span>
+          <div class="alert-body">
+            <div class="alert-title">저장에 실패했습니다</div>
+            <div class="alert-msg">서버와의 연결이 일시적으로 끊겼습니다. 입력값은 그대로 유지되니 잠시 후 다시 시도해 주세요.</div>
+          </div>
+        </div>
       </div>
-      <div class="alert warning" data-component="Alert" data-type="Warning">
-        <span class="alert-icon">⚠</span>
-        <span>신용정보원 데이터 수집이 4시간 지연되고 있습니다. 확인이 필요합니다.</span>
+    </div>
+
+    <!-- Dismissible (X 닫기) -->
+    <div class="subsection">
+      <div class="subsection-title">닫기 가능 (alert-close)</div>
+      <div class="showcase col">
+        <div class="alert success" data-component="Alert" data-type="Dismissible-Success">
+          <span class="alert-icon">[Alert]</span>
+          <div class="alert-body">
+            <div class="alert-title">등록되었습니다</div>
+            <div class="alert-msg">새로 추가된 항목은 목록 최상단에서 확인할 수 있습니다.</div>
+          </div>
+          <button class="alert-close" aria-label="닫기">✕</button>
+        </div>
+        <div class="alert warning" data-component="Alert" data-type="Dismissible-Warning">
+          <span class="alert-icon">[Alert]</span>
+          <span>저장되지 않은 변경 사항이 있습니다. 페이지를 떠나기 전 저장하세요.</span>
+          <button class="alert-close" aria-label="닫기">✕</button>
+        </div>
       </div>
-      <div class="alert error" data-component="Alert" data-type="Error">
-        <span class="alert-icon">✕</span>
-        <span>정합성 오류 17건이 감지되었습니다. 즉시 파이프라인 상태를 확인하세요.</span>
+    </div>
+
+    <!-- 모달형 alert — 1개 버튼 (확인 alert) -->
+    <div class="subsection">
+      <div class="subsection-title">확인 alert (모달형 · 버튼 1개)</div>
+      <div class="showcase col">
+
+        <div class="alert-dialog-preview" data-component="AlertDialog" data-type="OneButton-Success" data-name="확인 alert (성공)">
+          <div class="alert-dialog">
+            <div class="alert-dialog-icon success">[Alert]</div>
+            <div class="alert-dialog-title">등록되었습니다</div>
+            <div class="alert-dialog-msg">새로 추가된 항목은 목록 최상단에서 확인할 수 있습니다.</div>
+            <div class="alert-dialog-actions single">
+              <button class="btn btn-cta">확인</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-dialog-preview" data-component="AlertDialog" data-type="OneButton-Error" data-name="확인 alert (오류)">
+          <div class="alert-dialog">
+            <div class="alert-dialog-icon error">[Alert]</div>
+            <div class="alert-dialog-title">저장에 실패했습니다</div>
+            <div class="alert-dialog-msg">서버와의 연결이 일시적으로 끊겼습니다. 잠시 후 다시 시도해 주세요.</div>
+            <div class="alert-dialog-actions single">
+              <button class="btn btn-cta">확인</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 모달형 alert — 2개 버튼 (컨펌 alert) -->
+    <div class="subsection">
+      <div class="subsection-title">컨펌 alert (모달형 · 버튼 2개)</div>
+      <div class="showcase col">
+
+        <div class="alert-dialog-preview" data-component="AlertDialog" data-type="TwoButton-Confirm" data-name="컨펌 alert (이탈 확인)">
+          <div class="alert-dialog">
+            <div class="alert-dialog-icon warning">[Alert]</div>
+            <div class="alert-dialog-title">변경 사항이 저장되지 않았습니다</div>
+            <div class="alert-dialog-msg">페이지를 나가시면 작성 중인 내용이 사라집니다. 계속하시겠습니까?</div>
+            <div class="alert-dialog-actions">
+              <button class="btn btn-ghost">취소</button>
+              <button class="btn btn-cta">나가기</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-dialog-preview" data-component="AlertDialog" data-type="TwoButton-Danger" data-name="컨펌 alert (삭제)">
+          <div class="alert-dialog">
+            <div class="alert-dialog-icon error">[Alert]</div>
+            <div class="alert-dialog-title">선택한 3개 아이템을 삭제하시겠습니까?</div>
+            <div class="alert-dialog-msg">사용 중인 세트가 있는 경우 함께 영향을 받습니다. 이 작업은 되돌릴 수 없습니다.</div>
+            <div class="alert-dialog-actions">
+              <button class="btn btn-ghost">취소</button>
+              <button class="btn btn-danger">삭제</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Light 변형 -->
+    <div class="subsection">
+      <div class="subsection-title">Light 변형 (옅은 배경, border 강조)</div>
+      <div class="showcase col">
+        <div class="alert light info" data-component="Alert" data-type="Light-Info">
+          <span class="alert-icon">[Alert]</span>
+          <div class="alert-body">
+            <div class="alert-title">팁</div>
+            <div class="alert-msg">아이템 이미지는 PNG 또는 SVG로 업로드하세요. SVG는 학생증 확대 시에도 선명하게 표시됩니다.</div>
+          </div>
+        </div>
+        <div class="alert light success" data-component="Alert" data-type="Light-Success">
+          <span class="alert-icon">[Alert]</span>
+          <span>모든 변경 사항이 자동 저장되었습니다.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner 변형 -->
+    <div class="subsection">
+      <div class="subsection-title">Banner (페이지 상단 풀폭)</div>
+      <div class="showcase col" style="padding: 0; border: 1px solid var(--wf-border); border-radius: var(--wf-radius); overflow: hidden;">
+        <div class="alert banner warning" data-component="Alert" data-type="Banner-Warning" style="margin: 0; width: 100%;">
+          <span class="alert-icon">[Alert]</span>
+          <div class="alert-body">
+            <div class="alert-title">읽기 전용 모드</div>
+            <div class="alert-msg">이 화면은 인수인계 동결 상태입니다. 수정이 필요한 경우 3차 프로젝트로 이관하세요.</div>
+          </div>
+          <button class="alert-close" aria-label="닫기">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline (필드 옆 helper / error) -->
+    <div class="subsection">
+      <div class="subsection-title">Inline (필드 helper / 폼 검증)</div>
+      <div class="showcase col">
+        <div class="input-wrap" data-component="Alert" data-type="Inline-Error">
+          <label class="input-label">아이템 이름 <span class="input-required">*</span></label>
+          <input class="input error" value="" placeholder="아이템 이름을 입력하세요">
+          <span class="alert-inline error">
+            <span class="alert-inline-icon">[Alert]</span>
+            아이템 이름을 입력해 주세요
+          </span>
+        </div>
+        <div class="input-wrap" data-component="Alert" data-type="Inline-Success">
+          <label class="input-label">아이디</label>
+          <input class="input" value="admin01">
+          <span class="alert-inline success">
+            <span class="alert-inline-icon">[Alert]</span>
+            사용 가능한 아이디입니다
+          </span>
+        </div>
+        <div class="input-wrap" data-component="Alert" data-type="Inline-Warning">
+          <label class="input-label">포인트</label>
+          <input class="input" value="9999999">
+          <span class="alert-inline warning">
+            <span class="alert-inline-icon">[Alert]</span>
+            10,000,000P 이상은 본 사업 검토 대상입니다
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm (페이지 임베드 박스형) -->
+    <div class="subsection">
+      <div class="subsection-title">Confirm 박스 (페이지 임베드 — modal 대안)</div>
+      <div class="showcase col">
+        <div class="alert confirm" data-component="Alert" data-type="Confirm">
+          <div class="alert-row">
+            <span class="alert-icon">[Alert]</span>
+            <div class="alert-body">
+              <div class="alert-title">선택한 3개 아이템을 삭제하시겠습니까?</div>
+              <div class="alert-msg">사용 중인 세트가 있는 경우 함께 영향을 받습니다. 이 작업은 되돌릴 수 없습니다.</div>
+            </div>
+          </div>
+          <div class="alert-actions" style="justify-content: flex-end; margin-top: 14px;">
+            <button class="btn btn-ghost btn-sm">취소</button>
+            <button class="btn btn-danger btn-sm">삭제</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1869,7 +2155,7 @@
 
             <!-- 선택된 기간 표시 + 액션 -->
             <div class="dp-footer" style="justify-content:space-between; align-items:center;">
-              <span style="font-size:12px; color:var(--wf-text-secondary);">
+              <span style="font-size:14px; color:var(--wf-text-secondary);">
                 선택 기간: <strong>2026-03-30 ~ 2026-04-30</strong> (32일)
               </span>
               <div style="display:flex; gap:8px;">
@@ -2043,7 +2329,7 @@
     <div class="showcase" style="align-items:flex-start; gap:40px;">
 
       <div class="comp-label" data-component="Dropdown" data-type="Default" data-name="기본 드롭다운">
-        <div style="margin-bottom:6px; font-size:12px; color:#AAA;">트리거 버튼 ↓</div>
+        <div style="margin-bottom:6px; font-size:14px; color:#AAA;">트리거 버튼 ↓</div>
         <button class="btn btn-sub">내보내기 ▾</button>
         <div class="dropdown-menu" style="position:relative; top:4px; box-shadow:none; border:1px solid var(--wf-border);">
           <div class="dropdown-item"><span class="di-icon">📄</span> 엑셀 다운로드</div>
@@ -2054,7 +2340,7 @@
       </div>
 
       <div class="comp-label" data-component="Dropdown" data-type="WithGroup" data-name="그룹 드롭다운">
-        <div style="margin-bottom:6px; font-size:12px; color:#AAA;">그룹 + 구분선 ↓</div>
+        <div style="margin-bottom:6px; font-size:14px; color:#AAA;">그룹 + 구분선 ↓</div>
         <button class="btn btn-ghost">더보기 ▾</button>
         <div class="dropdown-menu" style="position:relative; top:4px; box-shadow:none;">
           <div class="dropdown-group-label">데이터 관리</div>
